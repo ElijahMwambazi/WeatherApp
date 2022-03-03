@@ -1,7 +1,8 @@
-import fetch from "node-fetch"
+// Uncomment if running in node console
+// import fetch from "node-fetch"
 
-const weather = {
-    "api-key": "af3ee534c9d1b85fa4988a12f0b41a21",
+let weather = {
+    "api-key": process.env.api-key,
     fetchLatLon: function (city, country="") {
         // Getting latitude and longitude
         fetch("http://api.openweathermap.org/geo/1.0/direct?q=" 
@@ -22,16 +23,14 @@ const weather = {
         + "&appid=" 
         + this["api-key"])
         .then((response) => respose.json())
-        .then((data) => this.displayWeather(data))
+        .then((data) => console.log(data))
     },
     displayWeather: function (data) {
         const { name } = data
         const { icon, description } = data.weather[0]
-        const { temp, humidity } = data.main
+        const { temperature, humidity } = data.main
         const { speed } = data.wind
 
-        console.log(name, icon, desciption, temp, humidity, speed)
+        console.log(name, icon, desciption, temperature, humidity, speed)
     }
 }
-
-weather.fetchLatLon("lusaka")
