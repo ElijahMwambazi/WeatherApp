@@ -3,7 +3,7 @@
 
 let weather = {
     // TODO: Remove api Key when commiting
-    "api-key": "af3ee534c9d1b85fa4988a12f0b41a21",
+    "api-key": "",
     fetchLatLon: function (location) {
         let [city, country] = location.trim().split(" ")
 
